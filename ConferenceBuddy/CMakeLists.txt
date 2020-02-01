@@ -8,6 +8,10 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(ConferenceBuddy_VERSION_MAJOR 0)
+set(ConferenceBuddy_VERSION_MINOR 1)
+set(ConferenceBuddy_VERSION_PATCH 0)
+
 set(MYSOURCES "${PROJECT_SOURCE_DIR}/src/mainwindow.h"
     "${PROJECT_SOURCE_DIR}/src/mainwindow.cpp")
 
