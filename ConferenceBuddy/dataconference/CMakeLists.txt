@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-add_library(DataConference dataconference.cpp)
+add_library(DataConference dataconference.cpp
+    dataformat.cpp
+    dataxmlformat.cpp)
 
 
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
