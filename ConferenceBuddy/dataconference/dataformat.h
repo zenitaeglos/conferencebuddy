@@ -2,6 +2,9 @@
 #define DATAFORMAT_H
 
 #include <QObject>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+
 
 class DataFormat : public QObject
 {
@@ -11,7 +14,16 @@ public:
 
     virtual QString format() = 0;
 
+    void fetch();
+
 signals:
+
+public slots:
+    virtual void networkDataObtained(QNetworkReply* networkRelpy) = 0;
+
+
+private:
+    QNetworkAccessManager* manager;
 
 };
 

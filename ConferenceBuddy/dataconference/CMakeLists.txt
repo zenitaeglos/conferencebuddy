@@ -11,8 +11,8 @@ add_library(DataConference dataconference.cpp
     datajsonformat.cpp)
 
 
-find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
 
 
-target_link_libraries(DataConference PRIVATE Qt5::Core Qt5::Widgets)
+target_link_libraries(DataConference PRIVATE Qt5::Core Qt5::Widgets Qt5::Network)
 

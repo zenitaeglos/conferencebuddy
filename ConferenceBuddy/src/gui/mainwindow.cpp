@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
-    conference(new DataConference(this))
+    xmlData(new DataXmlFormat())
 {
-
+    xmlData->fetch();
 }

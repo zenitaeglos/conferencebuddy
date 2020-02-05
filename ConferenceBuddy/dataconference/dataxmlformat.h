@@ -2,6 +2,7 @@
 #define DATAXMLFORMAT_H
 
 #include <QObject>
+#include <QDebug>
 #include "dataformat.h"
 
 class DataXmlFormat : public DataFormat
@@ -13,6 +14,9 @@ public:
     virtual QString format() override;
 
 signals:
+
+public slots:
+    void networkDataObtained(QNetworkReply *networkRelpy) override;
 
 };
 

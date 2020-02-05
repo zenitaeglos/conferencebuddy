@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <QObject>
-#include "dataconference/dataconference.h"
+#include "dataconference/dataformat.h"
+#include "dataconference/dataxmlformat.h"
 
 class MainWindow : public QMainWindow
 {
@@ -16,7 +17,7 @@ signals:
 public slots:
 
 private:
-    DataConference* conference;
+    DataFormat* xmlData;
 };
 
 #endif // MAINWINDOW_H
