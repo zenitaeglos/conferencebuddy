@@ -1,6 +1,6 @@
 #include "datajsonformat.h"
 
-DataJsonFormat::DataJsonFormat()
+DataJsonFormat::DataJsonFormat(QObject *parent) : DataFormat(parent)
 {
 
 }
@@ -8,4 +8,11 @@ DataJsonFormat::DataJsonFormat()
 QString DataJsonFormat::format()
 {
     return "json";
+}
+
+void DataJsonFormat::networkDataObtained(QNetworkReply *networkRelpy)
+{
+    qInfo() << "network reply";
+    QByteArray jsonArray = networkRelpy->readAll();
+    qDebug() << jsonArray;
 }

@@ -1,6 +1,6 @@
 #include "dataxmlformat.h"
 
-DataXmlFormat::DataXmlFormat()
+DataXmlFormat::DataXmlFormat(QObject *parent) : DataFormat(parent)
 {
     qDebug() << "calling xml";
 }

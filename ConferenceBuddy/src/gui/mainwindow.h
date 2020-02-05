@@ -5,6 +5,7 @@
 #include <QObject>
 #include "dataconference/dataformat.h"
 #include "dataconference/dataxmlformat.h"
+#include "dataconference/datajsonformat.h"
 
 class MainWindow : public QMainWindow
 {

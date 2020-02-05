@@ -8,8 +8,12 @@ class DataJsonFormat : public DataFormat
 {
     Q_OBJECT
 public:
-    explicit DataJsonFormat();
+    explicit DataJsonFormat(QObject *parent = nullptr);
     virtual QString format() override;
+
+
+public slots:
+    virtual void networkDataObtained(QNetworkReply *networkRelpy) override;
 
 
 signals:

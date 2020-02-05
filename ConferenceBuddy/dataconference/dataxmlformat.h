@@ -9,7 +9,7 @@ class DataXmlFormat : public DataFormat
 {
     Q_OBJECT
 public:
-    explicit DataXmlFormat();
+    explicit DataXmlFormat(QObject *parent = nullptr);
 
     virtual QString format() override;
 
