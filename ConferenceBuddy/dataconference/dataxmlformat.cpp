@@ -5,6 +5,11 @@ DataXmlFormat::DataXmlFormat(QObject *parent) : DataFormat(parent)
     qDebug() << "calling xml";
 }
 
+DataXmlFormat::DataXmlFormat(QString urlPath, QObject *parent) : DataFormat(parent)
+{
+    this->urlPath = urlPath;
+}
+
 QString DataXmlFormat::format()
 {
     return "xml";

@@ -11,6 +11,7 @@ class DataFormat : public QObject
     Q_OBJECT
 public:
     explicit DataFormat(QObject *parent = nullptr);
+    explicit DataFormat(QString urlPath, QObject *parent = nullptr);
 
     virtual QString format() = 0;
 
@@ -21,6 +22,9 @@ signals:
 public slots:
     virtual void networkDataObtained(QNetworkReply* networkRelpy) = 0;
 
+
+protected:
+    QString urlPath;
 
 private:
     QNetworkAccessManager* manager;

@@ -10,6 +10,7 @@ class DataXmlFormat : public DataFormat
     Q_OBJECT
 public:
     explicit DataXmlFormat(QObject *parent = nullptr);
+    explicit DataXmlFormat(QString urlPath, QObject *parent = nullptr);
 
     virtual QString format() override;
 

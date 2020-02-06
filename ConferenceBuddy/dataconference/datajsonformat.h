@@ -9,6 +9,7 @@ class DataJsonFormat : public DataFormat
     Q_OBJECT
 public:
     explicit DataJsonFormat(QObject *parent = nullptr);
+    explicit DataJsonFormat(QString urlPath, QObject *parent = nullptr);
     virtual QString format() override;
 
 

@@ -5,6 +5,12 @@ DataJsonFormat::DataJsonFormat(QObject *parent) : DataFormat(parent)
 
 }
 
+DataJsonFormat::DataJsonFormat(QString urlPath, QObject *parent) : DataFormat(parent)
+{
+    this->urlPath = urlPath;
+    qInfo() << this->urlPath;
+}
+
 QString DataJsonFormat::format()
 {
     return "json";

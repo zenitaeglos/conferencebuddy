@@ -6,6 +6,7 @@
 #include "dataconference/dataformat.h"
 #include "dataconference/dataxmlformat.h"
 #include "dataconference/datajsonformat.h"
+#include "dataconference/factoryformat.h"
 
 class MainWindow : public QMainWindow
 {
@@ -18,7 +19,8 @@ signals:
 public slots:
 
 private:
-    DataFormat* xmlData;
+    DataFormat* dataFormat;
+    DataFormat* xmData;
 };
 
 #endif // MAINWINDOW_H

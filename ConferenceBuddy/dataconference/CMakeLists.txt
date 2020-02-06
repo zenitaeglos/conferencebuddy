@@ -1,3 +1,5 @@
+project(libDataConference VERSION 0.1)
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -8,7 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(DataConference dataconference.cpp
     dataformat.cpp
     dataxmlformat.cpp
-    datajsonformat.cpp)
+    datajsonformat.cpp
+    factoryformat.cpp)
 
 
 find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
