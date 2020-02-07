@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QDebug>
+#include <QXmlStreamReader>
 #include "dataformat.h"
 
 class DataXmlFormat : public DataFormat
