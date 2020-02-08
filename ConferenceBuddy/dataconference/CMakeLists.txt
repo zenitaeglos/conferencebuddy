@@ -11,7 +11,8 @@ add_library(DataConference dataconference.cpp
     dataformat.cpp
     dataxmlformat.cpp
     datajsonformat.cpp
-    factoryformat.cpp)
+    factoryformat.cpp
+    converter/convertertoxmlschema.cpp)
 
 
 find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
