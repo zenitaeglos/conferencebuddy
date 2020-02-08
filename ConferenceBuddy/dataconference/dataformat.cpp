@@ -2,7 +2,7 @@
 
 DataFormat::DataFormat(QObject *parent) : QObject(parent),
     schemaXml(new ConverterToXmlSchema(this)),
-    manager(new QNetworkAccessManager)
+    manager(new QNetworkAccessManager(this))
 {
     //urlPath = "https://api.astrocats.space/catalog?ra=21:23:32.16&dec=-53:01:36.08&radius=2";
     // connections

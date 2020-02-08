@@ -2,6 +2,8 @@
 #define CONVERTERTOXMLSCHEMA_H
 
 #include <QObject>
+#include <QXmlStreamWriter>
+
 
 class ConverterToXmlSchema : public QObject
 {
