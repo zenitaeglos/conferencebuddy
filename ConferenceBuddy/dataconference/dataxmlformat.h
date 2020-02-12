@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QXmlStreamReader>
 #include "dataformat.h"
+#include "schema/schema.h"
+
 
 class DataXmlFormat : public DataFormat
 {
@@ -19,6 +21,9 @@ signals:
 
 public slots:
     void networkDataObtained(QNetworkReply *networkRelpy) override;
+
+private:
+    Schema* schema;
 
 };
 
