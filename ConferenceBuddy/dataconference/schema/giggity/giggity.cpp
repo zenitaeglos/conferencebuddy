@@ -21,8 +21,10 @@ void Giggity::setSubTag(QString key)
 {
     if (key == "conference")
         subTag = Conference;
-    else if (key == "day")
+    else if (key == "day") {
         subTag = Day;
+
+    }
     else if (key == "room")
         subTag = Room;
     else if (key == "event")

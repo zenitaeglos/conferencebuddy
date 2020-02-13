@@ -14,7 +14,9 @@ add_library(DataConference dataconference.cpp
     factoryformat.cpp
     converter/convertertoxmlschema.cpp
     schema/schema.cpp
-    schema/giggity/giggity.cpp)
+    schema/giggity/giggity.cpp
+    schema/giggity/giggitydaytag.cpp
+    schema/giggity/giggityroomtag.cpp)
 
 
 find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)

@@ -6,6 +6,7 @@
 #include <QJsonArray>
 #include <QDebug>
 #include "schema/schema.h"
+#include "giggitydaytag.h"
 
 class Giggity : public Schema
 {
@@ -38,6 +39,7 @@ private:
     QString city;
     QString start;
     QString end;
+    QVector<GiggityDayTag*> dayTag;
 
 };
 
