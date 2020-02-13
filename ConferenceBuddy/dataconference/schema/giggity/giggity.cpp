@@ -49,6 +49,11 @@ QJsonObject Giggity::conferenceHeader()
     return confHeader;
 }
 
+QJsonArray Giggity::conferenceList()
+{
+    return QJsonArray();
+}
+
 void Giggity::setValueConferenceTag(QString key, QString value)
 {
     qDebug() << "key" << key << value;

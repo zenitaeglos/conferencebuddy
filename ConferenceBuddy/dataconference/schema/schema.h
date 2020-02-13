@@ -15,6 +15,7 @@ public:
     virtual void setSubTag(QString key) = 0;
     virtual void unsetSubTag(QString key) = 0;
     virtual QJsonObject conferenceHeader() = 0;
+    virtual QJsonArray conferenceList() = 0;
 
 signals:
 
