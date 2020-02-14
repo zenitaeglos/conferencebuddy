@@ -33,27 +33,10 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
             xmlReader.readNext();
             qDebug() << xmlReader.text().toString();
             schema->setValue(key, xmlReader.text().toString());
-            /*
-            schema->setValue(xmlReader.name().toString(), "name");
-            if (xmlReader.name() == "title") {
-                xmlReader.readNext();
-                qDebug() << "title" << xmlReader.text();
-            }
-            if (xmlReader.name() == "room") {
-                xmlReader.readNext();
-                qDebug() << "room" << xmlReader.text();
-            }
-            if (xmlReader.name() == "link") {
-                qDebug() << xmlReader.attributes().value("href");
-                xmlReader.readNext();
-
-
-                qDebug() << "link" << xmlReader.text() << xmlReader.attributes().value("href");
-            }
-            */
         }
         if (token == QXmlStreamReader::EndElement) {
             //qDebug() << "end element";
+            schema->unsetSubTag(xmlReader.name().toString());
         }
     }
     Giggity* gig = static_cast<Giggity*>(schema);

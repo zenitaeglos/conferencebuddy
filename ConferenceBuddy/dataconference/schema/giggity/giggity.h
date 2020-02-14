@@ -7,6 +7,9 @@
 #include <QDebug>
 #include "schema/schema.h"
 #include "giggitydaytag.h"
+#include "giggityroomtag.h"
+#include "giggityeventtag.h"
+
 
 class Giggity : public Schema
 {
@@ -28,18 +31,23 @@ public:
     virtual void setSubTag(QString key) override;
     virtual void unsetSubTag(QString key) override;
     virtual QJsonObject conferenceHeader() override;
+    virtual QJsonArray conferenceList() override;
 
 signals:
 
 
 private:
     void setValueConferenceTag(QString key, QString value);
+    void setValueEventTag(QString key, QString value);
     SubTag subTag;
     QString title;
     QString city;
     QString start;
     QString end;
+    QString days;
     QVector<GiggityDayTag*> dayTag;
+    QVector<QString> attributes;
+    QVector<GiggityEventTag*> eventTag;
 
 };
 

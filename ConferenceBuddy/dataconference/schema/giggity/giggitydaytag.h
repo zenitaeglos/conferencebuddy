@@ -10,6 +10,7 @@ class GiggityDayTag : public QObject
     Q_OBJECT
 public:
     explicit GiggityDayTag(QObject *parent = nullptr);
+    static QVector<QString> getAttributes();
 
 signals:
 

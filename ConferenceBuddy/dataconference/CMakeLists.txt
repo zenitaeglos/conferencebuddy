@@ -16,7 +16,8 @@ add_library(DataConference dataconference.cpp
     schema/schema.cpp
     schema/giggity/giggity.cpp
     schema/giggity/giggitydaytag.cpp
-    schema/giggity/giggityroomtag.cpp)
+    schema/giggity/giggityroomtag.cpp
+    schema/giggity/giggityeventtag.cpp)
 
 
 find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
