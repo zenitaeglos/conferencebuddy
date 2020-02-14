@@ -54,3 +54,23 @@ QString GiggityEventTag::getSlug() const
 {
     return slug;
 }
+
+void GiggityEventTag::setDescription(QString descriptionTag)
+{
+    description = descriptionTag;
+}
+
+QString GiggityEventTag::getDescription() const
+{
+    return description;
+}
+
+void GiggityEventTag::setAbstract(QString abstractTag)
+{
+    abstract = abstractTag;
+}
+
+QString GiggityEventTag::getAbstract() const
+{
+    return abstract;
+}

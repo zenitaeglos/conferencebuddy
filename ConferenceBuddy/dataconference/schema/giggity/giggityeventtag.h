@@ -19,6 +19,10 @@ public:
     QString getDuration() const;
     void setSlug(QString slugTag);
     QString getSlug() const;
+    void setDescription(QString descriptionTag);
+    QString getDescription() const;
+    void setAbstract(QString abstractTag);
+    QString getAbstract() const;
 
 signals:
 

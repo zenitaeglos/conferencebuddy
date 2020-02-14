@@ -14,3 +14,18 @@ QVector<QString> GiggityDayTag::getAttributes()
     attributes.push_back("index");
     return attributes;
 }
+
+void GiggityDayTag::setAttribute(QString attribute, QString value)
+{
+    qDebug() << "attributes" << attribute << value;
+}
+
+QString GiggityDayTag::getIndex() const
+{
+    return indexAttribute;
+}
+
+QString GiggityDayTag::getDate() const
+{
+    return dateAttribute;
+}

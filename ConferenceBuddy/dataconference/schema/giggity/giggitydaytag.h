@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QVector>
+#include <QtCore/QDebug>
 #include "giggityroomtag.h"
 
 class GiggityDayTag : public QObject
@@ -11,6 +12,9 @@ class GiggityDayTag : public QObject
 public:
     explicit GiggityDayTag(QObject *parent = nullptr);
     static QVector<QString> getAttributes();
+    void setAttribute(QString attribute, QString value);
+    QString getIndex() const;
+    QString getDate() const;
 
 signals:
 

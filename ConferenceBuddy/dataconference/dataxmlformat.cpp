@@ -28,14 +28,16 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
         QXmlStreamReader::TokenType token = xmlReader.readNext();
         if (token == QXmlStreamReader::StartElement) {
             schema->setSubTag(xmlReader.name().toString());
+            QVector<QString> attributesTag = schema->attributeValues();
+            foreach(QString attribute, attributesTag) {
+                //Give the attribute
+                schema->setAttributeOfTag(attribute, xmlReader.attributes().value(attribute).toString());
+            }
             const QString key = xmlReader.name().toString();
-            qDebug() << key;
             xmlReader.readNext();
-            qDebug() << xmlReader.text().toString();
             schema->setValue(key, xmlReader.text().toString());
         }
         if (token == QXmlStreamReader::EndElement) {
-            //qDebug() << "end element";
             schema->unsetSubTag(xmlReader.name().toString());
         }
     }

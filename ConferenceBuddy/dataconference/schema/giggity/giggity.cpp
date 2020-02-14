@@ -16,8 +16,6 @@ void Giggity::setValue(QString key, QString value)
     if (subTag == Conference)
         setValueConferenceTag(key, value);
     else if (subTag == Event) {
-        if (key == "title")
-            qDebug() << key << "key to send with this laue" << value;
         setValueEventTag(key, value);
 
     }
@@ -32,11 +30,12 @@ void Giggity::setSubTag(QString key)
         this->attributes = GiggityDayTag::getAttributes();
     }
     else if (key == "room") {
+        attributes.clear();
         if (subTag == Day)
             subTag = Room;
     }
     else if (key == "event") {
-        qDebug() << "subtag event selected";
+        attributes.clear();
         subTag = Event;
         GiggityEventTag* eventTagElement = new GiggityEventTag(this);
         eventTag.push_back(eventTagElement);
@@ -63,7 +62,7 @@ void Giggity::unsetSubTag(QString key)
         subTag = Event;
     else if (key == "event")
         subTag = Room;
-    qDebug() << eventTag.size() << "how many events";
+
     if (eventTag.size() == 76) {
         foreach(GiggityEventTag* eventTagElement, eventTag) {
             qDebug() << eventTagElement->getTitle() << eventTagElement << eventTagElement->getRoom() << eventTagElement->getSlug()
@@ -86,6 +85,20 @@ QJsonObject Giggity::conferenceHeader()
 QJsonArray Giggity::conferenceList()
 {
     return QJsonArray();
+}
+
+QVector<QString> Giggity::attributeValues()
+{
+    return attributes;
+}
+
+void Giggity::setAttributeOfTag(QString attributeOfTag, QString value)
+{
+    if (subTag == Day) {
+        GiggityDayTag* tagElement = new GiggityDayTag(this);
+        tagElement->setAttribute(attributeOfTag, value);
+    }
+
 }
 
 void Giggity::setValueConferenceTag(QString key, QString value)
@@ -115,4 +128,8 @@ void Giggity::setValueEventTag(QString key, QString value)
         eventTagElement->setSlug(value);
     else if (key == "duration")
         eventTagElement->setDuration(value);
+    else if (key == "description")
+        eventTagElement->setDescription(value);
+    else if (key == "abstract")
+        eventTagElement->setAbstract(value);
 }

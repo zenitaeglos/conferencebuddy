@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QVector>
 #include <QDebug>
 #include "schema/schema.h"
 #include "giggitydaytag.h"
@@ -32,6 +33,8 @@ public:
     virtual void unsetSubTag(QString key) override;
     virtual QJsonObject conferenceHeader() override;
     virtual QJsonArray conferenceList() override;
+    virtual QVector<QString> attributeValues() override;
+    virtual void setAttributeOfTag(QString attributeOfTag, QString value) override;
 
 signals:
 
