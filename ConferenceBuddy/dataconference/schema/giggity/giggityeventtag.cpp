@@ -24,3 +24,33 @@ QString GiggityEventTag::getRoom() const
 {
     return room;
 }
+
+void GiggityEventTag::setStart(QString startTag)
+{
+    start = startTag;
+}
+
+QString GiggityEventTag::getStart() const
+{
+    return start;
+}
+
+void GiggityEventTag::setDuration(QString durationTag)
+{
+    duration = durationTag;
+}
+
+QString GiggityEventTag::getDuration() const
+{
+    return duration;
+}
+
+void GiggityEventTag::setSlug(QString slugTag)
+{
+    slug = slugTag;
+}
+
+QString GiggityEventTag::getSlug() const
+{
+    return slug;
+}

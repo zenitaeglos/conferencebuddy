@@ -13,6 +13,12 @@ public:
     QString getTitle() const;
     void setRoom(QString roomTag);
     QString getRoom() const;
+    void setStart(QString startTag);
+    QString getStart() const;
+    void setDuration(QString durationTag);
+    QString getDuration() const;
+    void setSlug(QString slugTag);
+    QString getSlug() const;
 
 signals:
 

@@ -66,7 +66,8 @@ void Giggity::unsetSubTag(QString key)
     qDebug() << eventTag.size() << "how many events";
     if (eventTag.size() == 76) {
         foreach(GiggityEventTag* eventTagElement, eventTag) {
-            qDebug() << eventTagElement->getTitle() << eventTagElement << eventTagElement->getRoom();
+            qDebug() << eventTagElement->getTitle() << eventTagElement << eventTagElement->getRoom() << eventTagElement->getSlug()
+                     << eventTagElement->getDuration();
         }
     }
 }
@@ -89,7 +90,6 @@ QJsonArray Giggity::conferenceList()
 
 void Giggity::setValueConferenceTag(QString key, QString value)
 {
-    qDebug() << "key" << key << value;
     if (key == "title")
         title = value;
     else if (key == "city")
@@ -104,13 +104,15 @@ void Giggity::setValueConferenceTag(QString key, QString value)
 
 void Giggity::setValueEventTag(QString key, QString value)
 {
-    qDebug() << "tu the mun an billon" << key << value;
     GiggityEventTag* eventTagElement = eventTag.last();
-    if (key == "title") {
-        qDebug() << "and more beyond";
+    if (key == "title")
         eventTagElement->setTitle(value);
-    }
-    if (key == "room") {
+    else if (key == "room")
         eventTagElement->setRoom(value);
-    }
+    else if (key == "start")
+        eventTagElement->setStart(value);
+    else if (key == "slug")
+        eventTagElement->setSlug(value);
+    else if (key == "duration")
+        eventTagElement->setDuration(value);
 }
