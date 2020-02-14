@@ -19,9 +19,7 @@ QString DataXmlFormat::format()
 
 void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
 {
-    qInfo() << "network info obtained";
     QByteArray xmlArray = networkRelpy->readAll();
-    //qDebug() << xmlArray;
     QXmlStreamReader xmlReader(xmlArray);
 
     while (!xmlReader.atEnd()) {

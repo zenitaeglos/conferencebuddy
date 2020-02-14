@@ -36,6 +36,7 @@ void Giggity::setSubTag(QString key)
     }
     else if (key == "event") {
         attributes.clear();
+        attributes = GiggityEventTag::getAttributes();
         subTag = Event;
         GiggityEventTag* eventTagElement = new GiggityEventTag(this);
         eventTag.push_back(eventTagElement);
@@ -66,7 +67,7 @@ void Giggity::unsetSubTag(QString key)
     if (eventTag.size() == 76) {
         foreach(GiggityEventTag* eventTagElement, eventTag) {
             qDebug() << eventTagElement->getTitle() << eventTagElement << eventTagElement->getRoom() << eventTagElement->getSlug()
-                     << eventTagElement->getDuration();
+                     << eventTagElement->getDuration() << eventTagElement->getId();
         }
     }
 }
@@ -98,7 +99,10 @@ void Giggity::setAttributeOfTag(QString attributeOfTag, QString value)
         GiggityDayTag* tagElement = new GiggityDayTag(this);
         tagElement->setAttribute(attributeOfTag, value);
     }
-
+    else if (subTag == Event) {
+        GiggityEventTag* eventTagElement = eventTag.last();
+        eventTagElement->setAttribute(attributeOfTag, value);
+    }
 }
 
 void Giggity::setValueConferenceTag(QString key, QString value)

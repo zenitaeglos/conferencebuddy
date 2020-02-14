@@ -74,3 +74,22 @@ QString GiggityEventTag::getAbstract() const
 {
     return abstract;
 }
+
+QVector<QString> GiggityEventTag::getAttributes()
+{
+    QVector<QString> attributes;
+    attributes.push_back("id");
+    return attributes;
+}
+
+void GiggityEventTag::setAttribute(QString attributeOfTag, QString value)
+{
+    qDebug() << attributeOfTag << value;
+    if (attributeOfTag == "id")
+        id = value;
+}
+
+QString GiggityEventTag::getId() const
+{
+    return id;
+}

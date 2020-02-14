@@ -24,6 +24,10 @@ public:
     void setAbstract(QString abstractTag);
     QString getAbstract() const;
 
+    static QVector<QString> getAttributes();
+    void setAttribute(QString attributeOfTag, QString value);
+    QString getId() const;
+
 signals:
 
 private:
@@ -36,6 +40,7 @@ private:
     QString type;
     QString abstract;
     QString description;
+    QString id;
 
 };
 
