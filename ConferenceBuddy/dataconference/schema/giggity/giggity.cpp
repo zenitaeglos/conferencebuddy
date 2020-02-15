@@ -33,11 +33,6 @@ void Giggity::setSubTag(QString key)
             subTag = Room;
     }
     else if (key == "event") {
-        if (eventTag.size() > 0) {
-            GiggityEventTag* lastEventTag = eventTag.last();
-            lastEventTag->setAttribute("date", dateAttribute);
-            lastEventTag->setAttribute("index", indexAttribute);
-        }
         attributes.clear();
         attributes = GiggityEventTag::getAttributes();
         subTag = Event;
@@ -90,6 +85,7 @@ QJsonObject Giggity::conferenceHeader()
 
 QJsonArray Giggity::conferenceList()
 {
+    // TODO make an array of eventtags
     return QJsonArray();
 }
 
