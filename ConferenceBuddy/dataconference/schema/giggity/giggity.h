@@ -34,12 +34,12 @@ public:
     virtual QVector<QString> attributeValues() override;
     virtual void setAttributeOfTag(QString attributeOfTag, QString value) override;
 
-    QVector<QString> getDayAttributes() const;
 
 signals:
 
 
 private:
+    QVector<QString> getDayAttributes() const;
     void setValueConferenceTag(QString key, QString value);
     void setValueEventTag(QString key, QString value);
     SubTag subTag;
