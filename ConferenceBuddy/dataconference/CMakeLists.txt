@@ -12,7 +12,6 @@ add_library(DataConference dataconference.cpp
     dataxmlformat.cpp
     datajsonformat.cpp
     factoryformat.cpp
-    converter/convertertoxmlschema.cpp
     schema/schema.cpp
     schema/giggity/giggity.cpp
     schema/giggity/giggitydaytag.cpp

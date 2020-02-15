@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include "converter/convertertoxmlschema.h"
 
 
 class DataFormat : public QObject
@@ -26,7 +25,6 @@ public slots:
 
 protected:
     QString urlPath;
-    ConverterToXmlSchema* schemaXml;
 
 private:
     QNetworkAccessManager* manager;
