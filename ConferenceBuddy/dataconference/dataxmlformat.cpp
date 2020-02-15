@@ -1,6 +1,7 @@
 #include "dataxmlformat.h"
 #include "schema/giggity/giggity.h"
 
+
 DataXmlFormat::DataXmlFormat(QObject *parent) : DataFormat(parent)
 {
     qDebug() << "calling xml";
@@ -8,6 +9,12 @@ DataXmlFormat::DataXmlFormat(QObject *parent) : DataFormat(parent)
 
 DataXmlFormat::DataXmlFormat(QString urlPath, QObject *parent) : DataFormat(parent),
     schema(new Giggity(this))
+{
+    this->urlPath = urlPath;
+}
+
+DataXmlFormat::DataXmlFormat(QString urlPath, Schema *schema, QObject *parent) : DataFormat(parent),
+    schema(schema)
 {
     this->urlPath = urlPath;
 }
@@ -29,7 +36,6 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
             QVector<QString> attributesTag = schema->attributeValues();
             foreach(QString attribute, attributesTag) {
                 //Give the attribute
-                qDebug() << "dataxmlformat sends" << attribute << xmlReader.attributes().value(attribute).toString();
                 schema->setAttributeOfTag(attribute, xmlReader.attributes().value(attribute).toString());
             }
             const QString key = xmlReader.name().toString();
@@ -40,6 +46,4 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
             schema->unsetSubTag(xmlReader.name().toString());
         }
     }
-    Giggity* gig = static_cast<Giggity*>(schema);
-    qDebug() << gig->conferenceHeader();
 }

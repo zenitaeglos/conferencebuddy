@@ -6,6 +6,7 @@
 #include "dataxmlformat.h"
 #include "dataformat.h"
 
+
 class FactoryFormat : public QObject
 {
     Q_OBJECT
@@ -14,6 +15,7 @@ public:
 
     virtual QString description() = 0;
     static DataFormat* makeFormat(QString formatType, QString urlPath, QString schema, QObject *parent = nullptr);
+    static DataFormat* makeFormat(QString schema, QString urlPath, QObject *parent = nullptr);
 
 signals:
 

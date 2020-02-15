@@ -1,4 +1,6 @@
 #include "factoryformat.h"
+#include "schema/giggity/giggity.h"
+
 
 FactoryFormat::FactoryFormat(QObject *parent) : QObject(parent)
 {
@@ -15,4 +17,13 @@ DataFormat *FactoryFormat::makeFormat(QString formatType, QString urlPath, QStri
         return new DataJsonFormat(urlPath, parent);
     }
     return new DataXmlFormat();
+}
+
+DataFormat *FactoryFormat::makeFormat(QString schema, QString urlPath, QObject *parent)
+{
+    qDebug() << "calling this makeformat";
+    if (schema == "giggity")
+        return new DataXmlFormat(urlPath, new Giggity(), parent);
+    else
+        return new DataXmlFormat();
 }
