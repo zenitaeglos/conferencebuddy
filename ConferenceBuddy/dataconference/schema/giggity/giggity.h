@@ -7,8 +7,6 @@
 #include <QVector>
 #include <QDebug>
 #include "schema/schema.h"
-#include "giggitydaytag.h"
-#include "giggityroomtag.h"
 #include "giggityeventtag.h"
 
 
@@ -36,6 +34,8 @@ public:
     virtual QVector<QString> attributeValues() override;
     virtual void setAttributeOfTag(QString attributeOfTag, QString value) override;
 
+    QVector<QString> getDayAttributes() const;
+
 signals:
 
 
@@ -48,9 +48,10 @@ private:
     QString start;
     QString end;
     QString days;
-    QVector<GiggityDayTag*> dayTag;
     QVector<QString> attributes;
     QVector<GiggityEventTag*> eventTag;
+    QString dateAttribute;
+    QString indexAttribute;
 
 };
 

@@ -28,6 +28,9 @@ public:
     void setAttribute(QString attributeOfTag, QString value);
     QString getId() const;
 
+    QString getDate() const;
+    QString getIndex() const;
+
 signals:
 
 private:
@@ -41,6 +44,8 @@ private:
     QString abstract;
     QString description;
     QString id;
+    QString date;
+    QString index;
 
 };
 

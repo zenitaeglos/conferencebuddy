@@ -87,9 +87,23 @@ void GiggityEventTag::setAttribute(QString attributeOfTag, QString value)
     qDebug() << attributeOfTag << value;
     if (attributeOfTag == "id")
         id = value;
+    else if (attributeOfTag == "date")
+        date = value;
+    else if (attributeOfTag == "index")
+        index = value;
 }
 
 QString GiggityEventTag::getId() const
 {
     return id;
+}
+
+QString GiggityEventTag::getDate() const
+{
+    return date;
+}
+
+QString GiggityEventTag::getIndex() const
+{
+    return index;
 }

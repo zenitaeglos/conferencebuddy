@@ -29,6 +29,7 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
             QVector<QString> attributesTag = schema->attributeValues();
             foreach(QString attribute, attributesTag) {
                 //Give the attribute
+                qDebug() << "dataxmlformat sends" << attribute << xmlReader.attributes().value(attribute).toString();
                 schema->setAttributeOfTag(attribute, xmlReader.attributes().value(attribute).toString());
             }
             const QString key = xmlReader.name().toString();
