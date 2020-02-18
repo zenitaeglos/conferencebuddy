@@ -42,6 +42,7 @@ private:
     QVector<QString> getDayAttributes() const;
     void setValueConferenceTag(QString key, QString value);
     void setValueEventTag(QString key, QString value);
+    void setValueLinkTag(QString key, QString value);
     SubTag subTag;
     QString title;
     QString city;
@@ -52,6 +53,8 @@ private:
     QVector<GiggityEventTag*> eventTag;
     QString dateAttribute;
     QString indexAttribute;
+
+    QString currentLinkHref;
 
 };
 

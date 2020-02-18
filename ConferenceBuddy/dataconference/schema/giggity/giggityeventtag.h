@@ -31,6 +31,11 @@ public:
     QString getDate() const;
     QString getIndex() const;
 
+    static QVector<QString> getLinkAttributes();
+
+    void setLink(QString href, QString value);
+    QMap<QString, QString> getLinks() const;
+
 signals:
 
 private:
@@ -46,6 +51,8 @@ private:
     QString id;
     QString date;
     QString index;
+
+    QMap<QString, QString> linksMap;
 
 };
 

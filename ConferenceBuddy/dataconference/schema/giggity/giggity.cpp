@@ -17,6 +17,8 @@ void Giggity::setValue(QString key, QString value)
         setValueConferenceTag(key, value);
     else if (subTag == Event)
         setValueEventTag(key, value);
+    else if (subTag == Links)
+        setValueLinkTag(key, value);
 }
 
 void Giggity::setSubTag(QString key)
@@ -33,11 +35,16 @@ void Giggity::setSubTag(QString key)
             subTag = Room;
     }
     else if (key == "event") {
+        currentLinkHref = "";
         attributes.clear();
         attributes = GiggityEventTag::getAttributes();
         subTag = Event;
         GiggityEventTag* eventTagElement = new GiggityEventTag(this);
         eventTag.push_back(eventTagElement);
+    }
+    else if (key == "link") {
+        subTag = Links;
+        attributes = GiggityEventTag::getLinkAttributes();
     }
     else {
         attributes.clear();
@@ -66,7 +73,8 @@ void Giggity::unsetSubTag(QString key)
     if (eventTag.size() == 76) {
         foreach(GiggityEventTag* eventTagElement, eventTag) {
             qDebug() << eventTagElement->getTitle() << eventTagElement << eventTagElement->getRoom() << eventTagElement->getSlug()
-                     << eventTagElement->getDuration() << eventTagElement->getId() << eventTagElement->getIndex() << eventTagElement->getDate();
+                     << eventTagElement->getDuration() << eventTagElement->getId() << eventTagElement->getIndex() << eventTagElement->getDate()
+                     << eventTagElement->getLinks() << "\n\n";
         }
     }
 
@@ -107,6 +115,10 @@ void Giggity::setAttributeOfTag(QString attributeOfTag, QString value)
         eventTagElement->setAttribute(attributeOfTag, value);
         eventTagElement->setAttribute("date", dateAttribute);
         eventTagElement->setAttribute("index", indexAttribute);
+    }
+    else if (subTag == Links) {
+        currentLinkHref = value;
+        qDebug() << attributeOfTag << value << "here are attribute and value";
     }
 }
 
@@ -149,4 +161,11 @@ void Giggity::setValueEventTag(QString key, QString value)
         eventTagElement->setDescription(value);
     else if (key == "abstract")
         eventTagElement->setAbstract(value);
+}
+
+void Giggity::setValueLinkTag(QString key, QString value)
+{
+    Q_UNUSED(key);
+    GiggityEventTag* eventTagElement = eventTag.last();
+    eventTagElement->setLink(currentLinkHref, value);
 }

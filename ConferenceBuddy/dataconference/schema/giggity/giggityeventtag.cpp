@@ -107,3 +107,21 @@ QString GiggityEventTag::getIndex() const
 {
     return index;
 }
+
+QVector<QString> GiggityEventTag::getLinkAttributes()
+{
+    QVector<QString> attributes;
+    attributes.push_back("href");
+    return attributes;
+}
+
+void GiggityEventTag::setLink(QString href, QString value)
+{
+    linksMap[href] = value;
+}
+
+QMap<QString, QString> GiggityEventTag::getLinks() const
+{
+    return linksMap;
+}
+
