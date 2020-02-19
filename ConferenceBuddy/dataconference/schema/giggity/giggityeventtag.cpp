@@ -125,3 +125,13 @@ QMap<QString, QString> GiggityEventTag::getLinks() const
     return linksMap;
 }
 
+QVector<QString> GiggityEventTag::getPersons() const
+{
+    return persons;
+}
+
+void GiggityEventTag::setPerson(QString person)
+{
+    persons.push_back(person);
+}
+

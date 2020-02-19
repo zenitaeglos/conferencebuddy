@@ -38,9 +38,14 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
                 //Give the attribute
                 schema->setAttributeOfTag(attribute, xmlReader.attributes().value(attribute).toString());
             }
-            const QString key = xmlReader.name().toString();
-            xmlReader.readNext();
-            schema->setValue(key, xmlReader.text().toString());
+            schema->setSettable(xmlReader.name().toString());
+            if (schema->settable()) {
+                const QString key = xmlReader.name().toString();
+                if (key == "person")
+                    qDebug() << key << "ya he conseguido que person pase la prueba";
+                xmlReader.readNext();
+                schema->setValue(key, xmlReader.text().toString());
+            }
         }
         if (token == QXmlStreamReader::EndElement) {
             schema->unsetSubTag(xmlReader.name().toString());

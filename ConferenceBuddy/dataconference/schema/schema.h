@@ -19,6 +19,8 @@ public:
     virtual QJsonArray conferenceList() = 0;
     virtual QVector<QString> attributeValues() = 0;
     virtual void setAttributeOfTag(QString attributeOfTag, QString value) = 0;
+    virtual bool settable() = 0;
+    virtual void setSettable(QString tag) = 0;
 
 signals:
 

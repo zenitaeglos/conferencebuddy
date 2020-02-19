@@ -36,6 +36,10 @@ public:
     void setLink(QString href, QString value);
     QMap<QString, QString> getLinks() const;
 
+    QVector<QString> getPersons() const;
+    void setPerson(QString person);
+
+
 signals:
 
 private:
@@ -53,6 +57,7 @@ private:
     QString index;
 
     QMap<QString, QString> linksMap;
+    QVector<QString> persons;
 
 };
 

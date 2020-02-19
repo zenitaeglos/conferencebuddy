@@ -1,7 +1,7 @@
 #include "giggity.h"
 
 Giggity::Giggity(QObject *parent) : Schema(parent),
-    subTag(NoSub)
+    subTag(NoSub), isSettable(true)
 {
 
 }
@@ -74,7 +74,7 @@ void Giggity::unsetSubTag(QString key)
         foreach(GiggityEventTag* eventTagElement, eventTag) {
             qDebug() << eventTagElement->getTitle() << eventTagElement << eventTagElement->getRoom() << eventTagElement->getSlug()
                      << eventTagElement->getDuration() << eventTagElement->getId() << eventTagElement->getIndex() << eventTagElement->getDate()
-                     << eventTagElement->getLinks() << "\n\n";
+                     << eventTagElement->getLinks() << eventTagElement->getPersons() << "\n\n";
         }
     }
 
@@ -122,6 +122,19 @@ void Giggity::setAttributeOfTag(QString attributeOfTag, QString value)
     }
 }
 
+bool Giggity::settable()
+{
+    return isSettable;
+}
+
+void Giggity::setSettable(QString tag)
+{
+    if (tag == "persons")
+        isSettable = false;
+    else
+        isSettable = true;
+}
+
 QVector<QString> Giggity::getDayAttributes() const
 {
     QVector<QString> dayAttributes;
@@ -161,6 +174,8 @@ void Giggity::setValueEventTag(QString key, QString value)
         eventTagElement->setDescription(value);
     else if (key == "abstract")
         eventTagElement->setAbstract(value);
+    else if (key == "person")
+        eventTagElement->setPerson(value);
 }
 
 void Giggity::setValueLinkTag(QString key, QString value)

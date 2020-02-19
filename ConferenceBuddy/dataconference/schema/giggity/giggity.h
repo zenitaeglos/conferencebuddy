@@ -34,6 +34,9 @@ public:
     virtual QVector<QString> attributeValues() override;
     virtual void setAttributeOfTag(QString attributeOfTag, QString value) override;
 
+    virtual bool settable() override;
+    virtual void setSettable(QString tag) override;
+
 
 signals:
 
@@ -55,6 +58,7 @@ private:
     QString indexAttribute;
 
     QString currentLinkHref;
+    bool isSettable;
 
 };
 
