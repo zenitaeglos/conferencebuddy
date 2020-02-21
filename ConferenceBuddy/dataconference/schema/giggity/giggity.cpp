@@ -106,13 +106,20 @@ QJsonArray Giggity::conferenceList()
         oneConference["slug"] = event->getSlug();
         oneConference["date"] = event->getDate();
         oneConference["conferenceTitle"] = event->getConferenceName();
+        oneConference["id"] = event->getId();
+        oneConference["index"] = event->getIndex();
+
+        QJsonArray personsArray;
+        foreach (QString person, event->getPersons())
+            personsArray.push_back(person);
+
+        oneConference["persons"] = personsArray;
 
         QJsonObject linkJsonObject;
         foreach (QString keyLink, event->getLinks().keys())
             linkJsonObject[keyLink] = event->getLinks()[keyLink];
         oneConference["links"] = linkJsonObject;
 
-        //oneConference["links"] = event->getLinks().toStdMap();
         conferenceJsonArray.append(oneConference);
     }
 
