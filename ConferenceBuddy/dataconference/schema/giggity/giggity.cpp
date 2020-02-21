@@ -94,7 +94,29 @@ QJsonObject Giggity::conferenceHeader()
 QJsonArray Giggity::conferenceList()
 {
     // TODO make an array of eventtags
-    return QJsonArray();
+
+
+    for (int i = 0; i < eventTag.size(); i++) {
+        QJsonObject oneConference;
+        GiggityEventTag* event = eventTag.at(i);
+        oneConference["title"] = event->getTitle();
+        oneConference["room"] = event->getRoom();
+        oneConference["description"] = event->getDescription();
+        oneConference["start"] = event->getStart();
+        oneConference["slug"] = event->getSlug();
+        oneConference["date"] = event->getDate();
+        oneConference["conferenceTitle"] = event->getConferenceName();
+
+        QJsonObject linkJsonObject;
+        foreach (QString keyLink, event->getLinks().keys())
+            linkJsonObject[keyLink] = event->getLinks()[keyLink];
+        oneConference["links"] = linkJsonObject;
+
+        //oneConference["links"] = event->getLinks().toStdMap();
+        conferenceJsonArray.append(oneConference);
+    }
+
+    return conferenceJsonArray;
 }
 
 QVector<QString> Giggity::attributeValues()
@@ -115,6 +137,7 @@ void Giggity::setAttributeOfTag(QString attributeOfTag, QString value)
         eventTagElement->setAttribute(attributeOfTag, value);
         eventTagElement->setAttribute("date", dateAttribute);
         eventTagElement->setAttribute("index", indexAttribute);
+        eventTagElement->setConferenceName(title);
     }
     else if (subTag == Links) {
         currentLinkHref = value;

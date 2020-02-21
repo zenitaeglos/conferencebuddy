@@ -39,6 +39,9 @@ public:
     QVector<QString> getPersons() const;
     void setPerson(QString person);
 
+    QString getConferenceName() const;
+    void setConferenceName(QString conference);
+
 
 signals:
 
@@ -58,6 +61,7 @@ private:
 
     QMap<QString, QString> linksMap;
     QVector<QString> persons;
+    QString conferenceName;
 
 };
 

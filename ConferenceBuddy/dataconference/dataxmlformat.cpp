@@ -51,4 +51,5 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
             schema->unsetSubTag(xmlReader.name().toString());
         }
     }
+    qDebug() << schema->conferenceList();
 }

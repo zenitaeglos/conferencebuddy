@@ -59,6 +59,7 @@ private:
 
     QString currentLinkHref;
     bool isSettable;
+    QJsonArray conferenceJsonArray;
 
 };
 

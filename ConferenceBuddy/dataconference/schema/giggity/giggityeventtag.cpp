@@ -135,3 +135,13 @@ void GiggityEventTag::setPerson(QString person)
     persons.push_back(person);
 }
 
+QString GiggityEventTag::getConferenceName() const
+{
+    return conferenceName;
+}
+
+void GiggityEventTag::setConferenceName(QString conference)
+{
+    conferenceName = conference;
+}
+
