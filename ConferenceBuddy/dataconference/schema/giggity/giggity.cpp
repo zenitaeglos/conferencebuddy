@@ -69,7 +69,7 @@ void Giggity::unsetSubTag(QString key)
     else if (key == "event")
         subTag = Room;
 
-
+    /*
     if (eventTag.size() == 76) {
         foreach(GiggityEventTag* eventTagElement, eventTag) {
             qDebug() << eventTagElement->getTitle() << eventTagElement << eventTagElement->getRoom() << eventTagElement->getSlug()
@@ -77,6 +77,7 @@ void Giggity::unsetSubTag(QString key)
                      << eventTagElement->getLinks() << eventTagElement->getPersons() << "\n\n";
         }
     }
+    */
 
 }
 
@@ -88,6 +89,7 @@ QJsonObject Giggity::conferenceHeader()
     confHeader.insert("start", this->start);
     confHeader.insert("end", this->end);
     confHeader.insert("days", this->days);
+    qDebug() << "coling header";
     return confHeader;
 }
 
@@ -148,7 +150,7 @@ void Giggity::setAttributeOfTag(QString attributeOfTag, QString value)
     }
     else if (subTag == Links) {
         currentLinkHref = value;
-        qDebug() << attributeOfTag << value << "here are attribute and value";
+        //qDebug() << attributeOfTag << value << "here are attribute and value";
     }
 }
 

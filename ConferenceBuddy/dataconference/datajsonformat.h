@@ -2,6 +2,7 @@
 #define DATAJSONFORMAT_H
 
 #include <QObject>
+#include <QtCore/QJsonObject>
 #include "dataformat.h"
 
 class DataJsonFormat : public DataFormat
@@ -12,6 +13,8 @@ public:
     explicit DataJsonFormat(QString urlPath, QObject *parent = nullptr);
     virtual QString format() override;
 
+
+    virtual QJsonObject headerInformationConference() override;
 
 public slots:
     virtual void networkDataObtained(QNetworkReply *networkRelpy) override;

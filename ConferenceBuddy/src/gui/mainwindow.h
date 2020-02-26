@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QObject>
+#include <QtCore/QJsonObject>
 #include "dataconference/dataformat.h"
 #include "dataconference/dataxmlformat.h"
 #include "dataconference/datajsonformat.h"
@@ -17,6 +18,7 @@ public:
 signals:
 
 public slots:
+    void headerConference(QJsonObject headerConferenceInformation);
 
 private:
     DataFormat* dataFormat;

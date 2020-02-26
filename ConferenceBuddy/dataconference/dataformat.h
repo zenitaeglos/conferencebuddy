@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QtCore/QJsonObject>
 
 
 class DataFormat : public QObject
@@ -17,7 +18,10 @@ public:
 
     void fetch();
 
+    virtual QJsonObject headerInformationConference() = 0;
+
 signals:
+    void headerChanged(QJsonObject headerJsonObject);
 
 public slots:
     virtual void networkDataObtained(QNetworkReply* networkRelpy) = 0;

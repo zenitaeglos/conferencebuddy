@@ -37,8 +37,8 @@ public:
     virtual bool settable() override;
     virtual void setSettable(QString tag) override;
 
-
 signals:
+
 
 
 private:

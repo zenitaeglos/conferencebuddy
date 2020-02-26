@@ -19,10 +19,15 @@ public:
 
     virtual QString format() override;
 
+    virtual QJsonObject headerInformationConference() override;
+
 signals:
+
 
 public slots:
     void networkDataObtained(QNetworkReply *networkRelpy) override;
+
+    void test(QJsonObject headerObject);
 
 private:
     Schema* schema;

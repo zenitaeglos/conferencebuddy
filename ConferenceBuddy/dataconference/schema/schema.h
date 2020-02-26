@@ -24,6 +24,7 @@ public:
 
 signals:
 
+
 };
 
 #endif // SCHEMA_H

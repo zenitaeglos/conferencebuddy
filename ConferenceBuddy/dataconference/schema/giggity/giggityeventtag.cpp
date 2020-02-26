@@ -84,7 +84,7 @@ QVector<QString> GiggityEventTag::getAttributes()
 
 void GiggityEventTag::setAttribute(QString attributeOfTag, QString value)
 {
-    qDebug() << attributeOfTag << value;
+    //qDebug() << attributeOfTag << value;
     if (attributeOfTag == "id")
         id = value;
     else if (attributeOfTag == "date")

@@ -4,7 +4,7 @@
 
 DataXmlFormat::DataXmlFormat(QObject *parent) : DataFormat(parent)
 {
-    qDebug() << "calling xml";
+
 }
 
 DataXmlFormat::DataXmlFormat(QString urlPath, QObject *parent) : DataFormat(parent),
@@ -24,6 +24,11 @@ QString DataXmlFormat::format()
     return "xml";
 }
 
+QJsonObject DataXmlFormat::headerInformationConference()
+{
+    return schema->conferenceHeader();
+}
+
 void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
 {
     QByteArray xmlArray = networkRelpy->readAll();
@@ -41,8 +46,9 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
             schema->setSettable(xmlReader.name().toString());
             if (schema->settable()) {
                 const QString key = xmlReader.name().toString();
-                if (key == "person")
-                    qDebug() << key << "ya he conseguido que person pase la prueba";
+
+                //if (key == "person")
+                //    qDebug() << key << "ya he conseguido que person pase la prueba";
                 xmlReader.readNext();
                 schema->setValue(key, xmlReader.text().toString());
             }
@@ -51,5 +57,12 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
             schema->unsetSubTag(xmlReader.name().toString());
         }
     }
-    qDebug() << schema->conferenceList();
+
+    emit headerChanged(schema->conferenceHeader());
+}
+
+void DataXmlFormat::test(QJsonObject headerObject)
+{
+    //emit headerChanged(headerObject);
+    qDebug() << "header object" << headerObject;
 }
