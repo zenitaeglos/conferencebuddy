@@ -9,10 +9,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     dataFormat->fetch();
     xmData->fetch();
     // https://fosdem.org/2020/schedule/xml
-    connect(xmData, &DataFormat::headerChanged, this, &MainWindow::headerConference);
+    connect(xmData, &DataFormat::conferenceChanged, this, &MainWindow::conferenceData);
 }
 
-void MainWindow::headerConference(QJsonObject headerConferenceInformation)
+void MainWindow::conferenceData(QJsonObject headerConference, QJsonArray conferenceList)
 {
-    qInfo() << "poj claro" << headerConferenceInformation;
+    qDebug() << headerConference;
+
+    qDebug() << conferenceList;
 }
+

@@ -18,7 +18,7 @@ public:
 signals:
 
 public slots:
-    void headerConference(QJsonObject headerConferenceInformation);
+    void conferenceData(QJsonObject headerConference, QJsonArray conferenceList);
 
 private:
     DataFormat* dataFormat;

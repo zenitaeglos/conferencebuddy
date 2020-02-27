@@ -58,7 +58,8 @@ void DataXmlFormat::networkDataObtained(QNetworkReply *networkRelpy)
         }
     }
 
-    emit headerChanged(schema->conferenceHeader());
+    //emit headerChanged(schema->conferenceHeader());
+    emit conferenceChanged(schema->conferenceHeader(), schema->conferenceList());
 }
 
 void DataXmlFormat::test(QJsonObject headerObject)
