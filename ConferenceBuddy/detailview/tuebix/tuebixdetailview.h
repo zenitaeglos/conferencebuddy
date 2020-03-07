@@ -3,7 +3,9 @@
 
 #include <QObject>
 #include <QWidget>
-#include "detailview.h"
+#include <QPushButton>
+#include <QHBoxLayout>
+#include "../detailview.h"
 
 class TuebixDetailView : public DetailView
 {
@@ -14,6 +16,11 @@ public:
     virtual QString viewName() override;
 
 signals:
+
+
+private:
+    QPushButton* buttonExample;
+    QHBoxLayout* horizontalLayout;
 
 };
 
