@@ -4,11 +4,17 @@
 #include <QMainWindow>
 #include <QObject>
 #include <QtCore/QJsonObject>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QHBoxLayout>
+#include <QWidget>
 #include "dataconference/dataformat.h"
 #include "dataconference/dataxmlformat.h"
 #include "dataconference/datajsonformat.h"
 #include "dataconference/factoryformat.h"
 #include "detailview/detailviewfactory.h"
+#include "detailview/detailview.h"
+#include "detailview/tuebix/tuebixdetailview.h"
+#include "detailview/fosdem/fosdemdetailview.h"
 
 
 class MainWindow : public QMainWindow
@@ -22,10 +28,18 @@ signals:
 public slots:
     void conferenceData(QJsonObject headerConference, QJsonArray conferenceList);
 
+    //change detail slot
+    void changeDetailView();
+
 private:
     DataFormat* dataFormat;
     DataFormat* xmData;
-    DetailViewFactory* factory;
+    DetailView* detailViewConference;
+
+    QWidget* mainWidget;
+    QHBoxLayout* horizontalLayout;
+    QPushButton* buttonChangeDetail;
+
 };
 
 #endif // MAINWINDOW_H
