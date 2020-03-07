@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QHBoxLayout>
+#include <QSlider>
 #include "../detailview.h"
 
 class FosdemDetailView : public DetailView
@@ -14,6 +16,10 @@ public:
     virtual QString viewName() override;
 
 signals:
+
+private:
+    QHBoxLayout* horizontalLayout;
+    QSlider* sliderExampleToDelete;
 
 };
 
