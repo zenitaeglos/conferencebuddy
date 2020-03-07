@@ -22,7 +22,6 @@ public:
     virtual QJsonObject headerInformationConference() = 0;
 
 signals:
-    void headerChanged(QJsonObject headerJsonObject);
     void conferenceChanged(QJsonObject headerObject, QJsonArray conferenceList);
 
 public slots:
