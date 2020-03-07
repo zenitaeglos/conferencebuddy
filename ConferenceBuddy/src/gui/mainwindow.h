@@ -8,6 +8,8 @@
 #include "dataconference/dataxmlformat.h"
 #include "dataconference/datajsonformat.h"
 #include "dataconference/factoryformat.h"
+#include "detailview/detailviewfactory.h"
+
 
 class MainWindow : public QMainWindow
 {
@@ -23,6 +25,7 @@ public slots:
 private:
     DataFormat* dataFormat;
     DataFormat* xmData;
+    DetailViewFactory* factory;
 };
 
 #endif // MAINWINDOW_H

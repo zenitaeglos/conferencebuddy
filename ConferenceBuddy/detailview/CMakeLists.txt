@@ -7,7 +7,9 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-add_library(DetailView detailviewfactory.cpp)
+add_library(DetailView detailviewfactory.cpp
+    detailview.cpp
+    tuebix/tuebixdetailview.cpp)
 
 
 find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
