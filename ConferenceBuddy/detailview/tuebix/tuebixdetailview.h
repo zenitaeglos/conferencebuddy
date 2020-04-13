@@ -7,6 +7,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QTextEdit>
 #include "../detailview.h"
 
 class TuebixDetailView : public DetailView
@@ -27,6 +28,7 @@ private:
     QLabel* conferenceTitle;
     QLabel* talkTitle;
     QVBoxLayout* mainLayout;
+    QTextEdit* descriptionTextEdit;
 
 };
 
