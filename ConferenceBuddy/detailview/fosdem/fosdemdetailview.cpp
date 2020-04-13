@@ -1,13 +1,15 @@
 #include "fosdemdetailview.h"
 
 FosdemDetailView::FosdemDetailView(QWidget *parent) : DetailView(parent),
-    horizontalLayout(new QHBoxLayout(this)),
-    sliderExampleToDelete(new QSlider(this))
-{
-    sliderExampleToDelete->setOrientation(Qt::Horizontal);
-    horizontalLayout->addWidget(sliderExampleToDelete);
+    mainLayout(new QVBoxLayout),
+    titleConference(new QLabel(this)),
+    talkConference(new QLabel(this))
 
-    setLayout(horizontalLayout);
+{
+
+    mainLayout->addWidget(titleConference);
+    mainLayout->addWidget(talkConference);
+    setLayout(mainLayout);
 }
 
 QString FosdemDetailView::viewName()
@@ -17,5 +19,6 @@ QString FosdemDetailView::viewName()
 
 void FosdemDetailView::setJsonData(QJsonValue data)
 {
-
+    titleConference->setText(data["conferenceTitle"].toString());
+    talkConference->setText(data["title"].toString());
 }

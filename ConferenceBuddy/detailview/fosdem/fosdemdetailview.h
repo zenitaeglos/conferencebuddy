@@ -4,7 +4,12 @@
 #include <QObject>
 #include <QWidget>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QSlider>
+#include <QLabel>
+
+#include <QTextEdit>
+
 #include "../detailview.h"
 
 class FosdemDetailView : public DetailView
@@ -20,8 +25,9 @@ public:
 signals:
 
 private:
-    QHBoxLayout* horizontalLayout;
-    QSlider* sliderExampleToDelete;
+    QVBoxLayout* mainLayout;
+    QLabel* titleConference;
+    QLabel* talkConference;
 
 };
 
