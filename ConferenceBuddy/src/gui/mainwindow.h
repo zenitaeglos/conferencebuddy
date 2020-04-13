@@ -7,6 +7,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QHBoxLayout>
 #include <QWidget>
+#include <QStackedLayout>
 #include "dataconference/dataformat.h"
 #include "dataconference/dataxmlformat.h"
 #include "dataconference/datajsonformat.h"
@@ -15,6 +16,8 @@
 #include "detailview/detailview.h"
 #include "detailview/tuebix/tuebixdetailview.h"
 #include "detailview/fosdem/fosdemdetailview.h"
+
+#include "listconferences/conferencelistdetail.h"
 
 
 class MainWindow : public QMainWindow
@@ -40,7 +43,8 @@ private:
 
     QWidget* mainWidget;
     QHBoxLayout* horizontalLayout;
-    QPushButton* buttonChangeDetail;
+    QStackedLayout* mainStackLayout;
+    ConferenceListDetail* conferenceListDetail;
 
 };
 

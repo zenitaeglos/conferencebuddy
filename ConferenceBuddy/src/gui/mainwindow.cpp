@@ -8,8 +8,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     //detailViewConference(DetailViewFactory::makeDetailView("fosdem")),
     detailViewConference(DetailViewFactory::makeDetailView("tuebix")),
     mainWidget(new QWidget(this)),
-    horizontalLayout(new QHBoxLayout)
-    //buttonChangeDetail(new QPushButton(this))
+    horizontalLayout(new QHBoxLayout),
+    mainStackLayout(new QStackedLayout),
+    conferenceListDetail(new ConferenceListDetail(this))
 {
 
     dataFormat->fetch();
@@ -18,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     //xmData(FactoryFormat::makeFormat("giggity", "https://fosdem.org/2020/schedule/xml", parent))
     //xmData(FactoryFormat::makeFormat("giggity", "https://programm.froscon.de/2019/schedule.xml", this))
     connect(xmData, &DataFormat::conferenceChanged, this, &MainWindow::conferenceData);
-    connect(buttonChangeDetail, &QPushButton::clicked, this, &MainWindow::changeDetailView);
+    //connect(buttonChangeDetail, &QPushButton::clicked, this, &MainWindow::changeDetailView);
 
     setupUI();
 }
@@ -26,10 +27,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 void MainWindow::setupUI()
 {
     //buttonChangeDetail->setText("Change detail");
-    horizontalLayout->addWidget(detailViewConference);
+    //horizontalLayout->addWidget(detailViewConference);
     //horizontalLayout->addWidget(buttonChangeDetail);
+    mainStackLayout->addWidget(detailViewConference);
+    mainStackLayout->addWidget(conferenceListDetail);
+    mainStackLayout->setCurrentIndex(1);
 
-    mainWidget->setLayout(horizontalLayout);
+    //mainWidget->setLayout(horizontalLayout);
+    mainWidget->setLayout(mainStackLayout);
 
     setGeometry(100, 100, 500, 400);
 
