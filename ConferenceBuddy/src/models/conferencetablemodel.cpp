@@ -7,7 +7,7 @@ ConferenceTableModel::ConferenceTableModel(QObject *parent) : QAbstractTableMode
 
 int ConferenceTableModel::rowCount(const QModelIndex &parent) const
 {
-    return 1;
+    return talksList.count();
 }
 
 int ConferenceTableModel::columnCount(const QModelIndex &parent) const
@@ -17,10 +17,17 @@ int ConferenceTableModel::columnCount(const QModelIndex &parent) const
 
 QVariant ConferenceTableModel::data(const QModelIndex &index, int role) const
 {
-    return QVariant();
+    return talksList.at(index.row());
 }
 
 QVariant ConferenceTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     return QVariant();
+}
+
+void ConferenceTableModel::setTalkListData(QList<QString> data)
+{
+    beginResetModel();
+    talksList = data;
+    endResetModel();
 }
