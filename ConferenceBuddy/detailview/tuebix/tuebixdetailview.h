@@ -5,6 +5,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QLabel>
 #include "../detailview.h"
 
 class TuebixDetailView : public DetailView
@@ -15,12 +17,16 @@ public:
 
     virtual QString viewName() override;
 
+    virtual void setJsonData(QJsonValue data) override;
+
 signals:
 
 
 private:
-    QPushButton* buttonExample;
-    QHBoxLayout* horizontalLayout;
+    //QHBoxLayout* horizontalLayout;
+    QLabel* conferenceTitle;
+    QLabel* talkTitle;
+    QVBoxLayout* mainLayout;
 
 };
 

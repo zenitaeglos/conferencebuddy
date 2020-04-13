@@ -15,6 +15,8 @@ public:
 
     virtual QString viewName() override;
 
+    virtual void setJsonData(QJsonValue data) override;
+
 signals:
 
 private:

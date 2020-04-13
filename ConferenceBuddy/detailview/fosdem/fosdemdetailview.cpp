@@ -14,3 +14,8 @@ QString FosdemDetailView::viewName()
 {
     return "fosdem";
 }
+
+void FosdemDetailView::setJsonData(QJsonValue data)
+{
+
+}
