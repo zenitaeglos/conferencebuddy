@@ -22,7 +22,9 @@ set(MYSOURCES "${PROJECT_SOURCE_DIR}/src/gui/mainwindow.h"
     "${PROJECT_SOURCE_DIR}/src/gui/listconferences/conferencelistdetail.h"
     "${PROJECT_SOURCE_DIR}/src/gui/listconferences/conferencelistdetail.cpp"
     "${PROJECT_SOURCE_DIR}/src/models/conferencetablemodel.h"
-    "${PROJECT_SOURCE_DIR}/src/models/conferencetablemodel.cpp")
+    "${PROJECT_SOURCE_DIR}/src/models/conferencetablemodel.cpp"
+    "${PROJECT_SOURCE_DIR}/src/gui/conferenceselection/conferenceselection.h"
+    "${PROJECT_SOURCE_DIR}/src/gui/conferenceselection/conferenceselection.cpp")
 
 find_package(Qt5 COMPONENTS Core Quick Widgets REQUIRED)
 

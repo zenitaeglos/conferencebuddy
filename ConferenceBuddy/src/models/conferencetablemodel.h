@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QAbstractTableModel>
 #include <QList>
+#include <QJsonValue>
 
 class ConferenceTableModel : public QAbstractTableModel
 {
@@ -17,11 +18,13 @@ public:
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
     void setTalkListData(QList<QString> data);
+    void setJsonTalkListData(QList<QJsonValue> data);
 
 signals:
 
 private:
     QList<QString> talksList;
+    QList<QJsonValue> talksJsonList;
 
 };
 

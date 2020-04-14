@@ -18,6 +18,7 @@
 #include "detailview/fosdem/fosdemdetailview.h"
 
 #include "listconferences/conferencelistdetail.h"
+#include "conferenceselection/conferenceselection.h"
 
 
 class MainWindow : public QMainWindow
@@ -45,6 +46,7 @@ private:
     QHBoxLayout* horizontalLayout;
     QStackedLayout* mainStackLayout;
     ConferenceListDetail* conferenceListDetail;
+    ConferenceSelection* conferenceSelection;
 
 };
 

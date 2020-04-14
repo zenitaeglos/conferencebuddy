@@ -10,7 +10,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     mainWidget(new QWidget(this)),
     horizontalLayout(new QHBoxLayout),
     mainStackLayout(new QStackedLayout),
-    conferenceListDetail(new ConferenceListDetail(this))
+    conferenceListDetail(new ConferenceListDetail(this)),
+    conferenceSelection(new ConferenceSelection(this))
 {
 
     dataFormat->fetch();
@@ -29,7 +30,7 @@ void MainWindow::setupUI()
     //buttonChangeDetail->setText("Change detail");
     //horizontalLayout->addWidget(detailViewConference);
     //horizontalLayout->addWidget(buttonChangeDetail);
-    mainStackLayout->addWidget(detailViewConference);
+    mainStackLayout->addWidget(conferenceSelection);
     mainStackLayout->addWidget(conferenceListDetail);
     mainStackLayout->setCurrentIndex(1);
 
