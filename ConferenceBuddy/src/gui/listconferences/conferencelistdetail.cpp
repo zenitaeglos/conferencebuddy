@@ -4,7 +4,7 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
     conferenceTableView(new QTableView(this)),
     mainLayout(new QHBoxLayout),
     conferenceModel(new ConferenceTableModel(this)),
-    //dataFromConference(FactoryFormat::makeFormat("giggity", "https://fosdem.org/2020/schedule/xml", this))
+    //dataFromConference(FactoryFormat::makeFormat("giggity", "https://fosdem.org/2020/schedule/xml", this)),
     dataFromConference(FactoryFormat::makeFormat("xml", "https://www.tuebix.org/2019/giggity.xml", "schema", this)),
     detailView(new TuebixDetailView(this))
 {
