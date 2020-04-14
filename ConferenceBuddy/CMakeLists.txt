@@ -13,14 +13,21 @@ set(ConferenceBuddy_VERSION_MINOR 1)
 set(ConferenceBuddy_VERSION_PATCH 0)
 
 add_subdirectory(dataconference)
+add_subdirectory(detailview)
 
 
 
 set(MYSOURCES "${PROJECT_SOURCE_DIR}/src/gui/mainwindow.h"
-    "${PROJECT_SOURCE_DIR}/src/gui/mainwindow.cpp")
+    "${PROJECT_SOURCE_DIR}/src/gui/mainwindow.cpp"
+    "${PROJECT_SOURCE_DIR}/src/gui/listconferences/conferencelistdetail.h"
+    "${PROJECT_SOURCE_DIR}/src/gui/listconferences/conferencelistdetail.cpp"
+    "${PROJECT_SOURCE_DIR}/src/models/conferencetablemodel.h"
+    "${PROJECT_SOURCE_DIR}/src/models/conferencetablemodel.cpp"
+    "${PROJECT_SOURCE_DIR}/src/gui/conferenceselection/conferenceselection.h"
+    "${PROJECT_SOURCE_DIR}/src/gui/conferenceselection/conferenceselection.cpp")
 
 find_package(Qt5 COMPONENTS Core Quick Widgets REQUIRED)
 
 add_executable(${PROJECT_NAME} "main.cpp" "qml.qrc" ${MYSOURCES})
 target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick Qt5::Widgets DataConference)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick Qt5::Widgets DataConference DetailView)
