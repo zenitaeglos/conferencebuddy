@@ -24,6 +24,8 @@ public:
 
     void conferenceData(QJsonObject headerConference, QJsonArray conferenceList);
 
+    void setConferenceInfo(QJsonValue conferenceInfo);
+
 signals:
 
 public slots:

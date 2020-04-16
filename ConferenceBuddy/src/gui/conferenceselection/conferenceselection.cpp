@@ -8,10 +8,14 @@ ConferenceSelection::ConferenceSelection(QWidget *parent) : QWidget(parent),
     QList<QJsonValue> values;
 
     QJsonObject x;
-    x["title"] = "one";
+    x["title"] = "tuebix";
+    x["url"] = "https://www.tuebix.org/2019/giggity.xml";
+    x["type"] = "xml";
     values.append(x);
     QJsonObject two;
-    two["title"] = "two";
+    two["title"] = "fosdem";
+    two["url"] = "https://fosdem.org/2020/schedule/xml";
+    two["type"] = "xml";
     values.append(two);
 
 
@@ -20,4 +24,13 @@ ConferenceSelection::ConferenceSelection(QWidget *parent) : QWidget(parent),
 
     mainLayout->addWidget(conferencesTableView);
     setLayout(mainLayout);
+
+    connect(conferencesTableView, &QTableView::doubleClicked, this, &ConferenceSelection::selectedConference);
+}
+
+void ConferenceSelection::selectedConference(const QModelIndex &index)
+{
+    QJsonValue conference = conferencesTableModel->conferenceSelected(index.row());
+    emit conferenceSelected(conference);
+    qDebug() << conference;
 }

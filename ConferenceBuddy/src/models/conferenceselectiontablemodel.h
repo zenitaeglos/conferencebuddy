@@ -19,6 +19,8 @@ public:
 
     void setConferencesData(QList<QJsonValue> data);
 
+    QJsonValue conferenceSelected(int position);
+
 signals:
 
 

@@ -4,8 +4,9 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
     conferenceTableView(new QTableView(this)),
     mainLayout(new QHBoxLayout),
     conferenceModel(new ConferenceTableModel(this)),
+    dataFromConference(nullptr),
     //dataFromConference(FactoryFormat::makeFormat("giggity", "https://fosdem.org/2020/schedule/xml", this)),
-    dataFromConference(FactoryFormat::makeFormat("xml", "https://www.tuebix.org/2019/giggity.xml", "schema", this)),
+    //dataFromConference(FactoryFormat::makeFormat("xml", "https://www.tuebix.org/2019/giggity.xml", "schema", this)),
     detailView(new TuebixDetailView(this))
 {
     conferenceModel->setTalkListData(QList<QString>());
@@ -16,10 +17,10 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
     mainLayout->addWidget(detailView);
     setLayout(mainLayout);
 
-    dataFromConference->fetch();
+    //dataFromConference->fetch();
 
     // connections
-    connect(dataFromConference, &DataFormat::conferenceChanged, this, &ConferenceListDetail::conferenceData);
+
 
     connect(conferenceTableView, &QTableView::doubleClicked, this, &ConferenceListDetail::setDetailViewInfo);
 }
@@ -27,6 +28,8 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
 void ConferenceListDetail::conferenceData(QJsonObject headerConference, QJsonArray conferenceList)
 {
     Q_UNUSED(headerConference);
+    qDebug() << headerConference;
+    conferenceJsonData.clear();
     QList<QString> data;
     QList<QJsonValue> dataJson;
     detailView->setJsonData(conferenceList.at(0));
@@ -37,6 +40,14 @@ void ConferenceListDetail::conferenceData(QJsonObject headerConference, QJsonArr
     }
     //conferenceModel->setTalkListData(data);
     conferenceModel->setJsonTalkListData(dataJson);
+}
+
+void ConferenceListDetail::setConferenceInfo(QJsonValue conferenceInfo)
+{
+    qDebug() << "I am calling";
+    dataFromConference = FactoryFormat::makeFormat("xml", conferenceInfo["url"].toString(), "schema", this);
+    connect(dataFromConference, &DataFormat::conferenceChanged, this, &ConferenceListDetail::conferenceData);
+    dataFromConference->fetch();
 }
 
 void ConferenceListDetail::setDetailViewInfo(const QModelIndex &index)

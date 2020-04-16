@@ -35,3 +35,8 @@ void ConferenceSelectionTableModel::setConferencesData(QList<QJsonValue> data)
 {
     conferences = data;
 }
+
+QJsonValue ConferenceSelectionTableModel::conferenceSelected(int position)
+{
+    return conferences.at(position);
+}

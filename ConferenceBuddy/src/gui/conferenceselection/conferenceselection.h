@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QJsonValue>
 #include <QJsonObject>
+#include <QDebug>
 #include "../../models/conferenceselectiontablemodel.h"
 
 class ConferenceSelection : public QWidget
@@ -17,6 +18,10 @@ public:
     explicit ConferenceSelection(QWidget *parent = nullptr);
 
 signals:
+    void conferenceSelected(QJsonValue conference);
+
+public slots:
+    void selectedConference(const QModelIndex& index);
 
 
 private:
