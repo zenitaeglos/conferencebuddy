@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     //connect(xmData, &DataFormat::conferenceChanged, this, &MainWindow::conferenceData);
     //connect(buttonChangeDetail, &QPushButton::clicked, this, &MainWindow::changeDetailView);
 
+    connect(conferenceListDetail, &ConferenceListDetail::backToMainPageClicked, this, &MainWindow::selectFirstStack);
+
     setupUI();
 }
 
@@ -37,7 +39,7 @@ void MainWindow::setupUI()
     //mainWidget->setLayout(horizontalLayout);
     mainWidget->setLayout(mainStackLayout);
 
-    setGeometry(100, 100, 500, 400);
+    setGeometry(100, 100, 800, 600);
 
     setCentralWidget(mainWidget);
 
@@ -59,6 +61,11 @@ void MainWindow::chosenConferenceToVisualize(QJsonValue conferenceInfo)
 {
     conferenceListDetail->setConferenceInfo(conferenceInfo);
     mainStackLayout->setCurrentIndex(1);
+}
+
+void MainWindow::selectFirstStack()
+{
+    mainStackLayout->setCurrentIndex(0);
 }
 
 void MainWindow::changeDetailView()

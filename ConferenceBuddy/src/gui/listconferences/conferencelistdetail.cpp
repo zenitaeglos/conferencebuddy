@@ -7,7 +7,8 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
     dataFromConference(nullptr),
     //dataFromConference(FactoryFormat::makeFormat("giggity", "https://fosdem.org/2020/schedule/xml", this)),
     //dataFromConference(FactoryFormat::makeFormat("xml", "https://www.tuebix.org/2019/giggity.xml", "schema", this)),
-    detailView(new TuebixDetailView(this))
+    detailView(new TuebixDetailView(this)),
+    backToFirstPageButton(new QPushButton("Back", this))
 {
     conferenceModel->setTalkListData(QList<QString>());
 
@@ -16,6 +17,7 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
 
     mainLayout->addWidget(conferenceTableView);
     mainLayout->addWidget(detailView);
+    mainLayout->addWidget(backToFirstPageButton);
     setLayout(mainLayout);
 
     //dataFromConference->fetch();
@@ -24,6 +26,8 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
 
 
     connect(conferenceTableView, &QTableView::doubleClicked, this, &ConferenceListDetail::setDetailViewInfo);
+
+    connect(backToFirstPageButton, &QPushButton::clicked, this, &ConferenceListDetail::leaveThisPage);
 }
 
 void ConferenceListDetail::conferenceData(QJsonObject headerConference, QJsonArray conferenceList)
@@ -31,11 +35,11 @@ void ConferenceListDetail::conferenceData(QJsonObject headerConference, QJsonArr
     Q_UNUSED(headerConference);
     qDebug() << headerConference;
     conferenceJsonData.clear();
-    QList<QString> data;
+    //QList<QString> data;
     QList<QJsonValue> dataJson;
     detailView->setJsonData(conferenceList.at(0));
     for (int i = 0; i < conferenceList.size(); i++) {
-        data.append(conferenceList.at(i)["title"].toString());
+        //data.append(conferenceList.at(i)["title"].toString());
         dataJson.append(conferenceList.at(i));
         conferenceJsonData.append(conferenceList.at(i));
     }
@@ -54,4 +58,9 @@ void ConferenceListDetail::setConferenceInfo(QJsonValue conferenceInfo)
 void ConferenceListDetail::setDetailViewInfo(const QModelIndex &index)
 {
     detailView->setJsonData(conferenceJsonData.at(index.row()));
+}
+
+void ConferenceListDetail::leaveThisPage()
+{
+    emit backToMainPageClicked();
 }

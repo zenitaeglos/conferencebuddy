@@ -36,6 +36,8 @@ public slots:
 
     void chosenConferenceToVisualize(QJsonValue conferenceInfo);
 
+    void selectFirstStack();
+
     //change detail slot
     void changeDetailView();
 

@@ -7,6 +7,7 @@
 #include <QJsonValue>
 #include <QHBoxLayout>
 #include <QHeaderView>
+#include <QPushButton>
 #include "../../models/conferencetablemodel.h"
 
 #include "dataconference/dataformat.h"
@@ -28,9 +29,12 @@ public:
     void setConferenceInfo(QJsonValue conferenceInfo);
 
 signals:
+    void backToMainPageClicked();
 
 public slots:
     void setDetailViewInfo(const QModelIndex& index);
+
+    void leaveThisPage();
 
 private:
     QTableView* conferenceTableView;
@@ -41,6 +45,8 @@ private:
     DetailView* detailView;
 
     QList<QJsonValue> conferenceJsonData;
+
+    QPushButton* backToFirstPageButton;
 
 };
 
