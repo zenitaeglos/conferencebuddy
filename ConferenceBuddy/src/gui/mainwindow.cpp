@@ -32,7 +32,7 @@ void MainWindow::setupUI()
     //horizontalLayout->addWidget(buttonChangeDetail);
     mainStackLayout->addWidget(conferenceSelection);
     mainStackLayout->addWidget(conferenceListDetail);
-    mainStackLayout->setCurrentIndex(1);
+    //mainStackLayout->setCurrentIndex(1);
 
     //mainWidget->setLayout(horizontalLayout);
     mainWidget->setLayout(mainStackLayout);
