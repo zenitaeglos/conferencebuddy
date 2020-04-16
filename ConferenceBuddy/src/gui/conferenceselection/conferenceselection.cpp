@@ -17,6 +17,11 @@ ConferenceSelection::ConferenceSelection(QWidget *parent) : QWidget(parent),
     two["url"] = "https://fosdem.org/2020/schedule/xml";
     two["type"] = "xml";
     values.append(two);
+    QJsonObject third;
+    third["title"] = "Froscon";
+    third["url"] = "https://programm.froscon.de/2019/schedule.xml";
+    third["type"] = "xml";
+    values.append(third);
 
 
     conferencesTableModel->setConferencesData(values);

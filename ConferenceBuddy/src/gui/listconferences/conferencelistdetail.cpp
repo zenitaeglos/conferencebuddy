@@ -51,10 +51,10 @@ void ConferenceListDetail::conferenceData(QJsonObject headerConference, QJsonArr
 void ConferenceListDetail::setConferenceInfo(QJsonValue conferenceInfo)
 {
     qDebug() << "I am calling";
-    if (conferenceInfo["title"].toString() == "tuebix")
-        detailView = new TuebixDetailView(this);
-    else
+    if (conferenceInfo["title"].toString() == "fosdem")
         detailView = new FosdemDetailView(this);
+    else
+        detailView = new TuebixDetailView(this);
     mainLayout->insertWidget(1, detailView);
     dataFromConference = FactoryFormat::makeFormat("xml", conferenceInfo["url"].toString(), "schema", this);
     connect(dataFromConference, &DataFormat::conferenceChanged, this, &ConferenceListDetail::conferenceData);
