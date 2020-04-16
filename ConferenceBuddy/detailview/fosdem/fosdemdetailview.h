@@ -5,10 +5,10 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <QSlider>
 #include <QLabel>
 
 #include <QTextEdit>
+#include <QDebug>
 
 #include "../detailview.h"
 
@@ -28,6 +28,7 @@ private:
     QVBoxLayout* mainLayout;
     QLabel* titleConference;
     QLabel* talkConference;
+    QLabel* descriptionTalk;
 
 };
 

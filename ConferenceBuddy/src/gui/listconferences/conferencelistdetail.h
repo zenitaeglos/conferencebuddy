@@ -17,6 +17,7 @@
 
 #include "detailview/detailview.h"
 #include "detailview/tuebix/tuebixdetailview.h"
+#include "detailview/fosdem/fosdemdetailview.h"
 
 class ConferenceListDetail : public QWidget
 {
