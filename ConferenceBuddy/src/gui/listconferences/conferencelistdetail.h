@@ -6,6 +6,7 @@
 #include <QTableView>
 #include <QJsonValue>
 #include <QHBoxLayout>
+#include <QHeaderView>
 #include "../../models/conferencetablemodel.h"
 
 #include "dataconference/dataformat.h"

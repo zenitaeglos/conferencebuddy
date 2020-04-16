@@ -22,6 +22,8 @@ ConferenceSelection::ConferenceSelection(QWidget *parent) : QWidget(parent),
     conferencesTableModel->setConferencesData(values);
     conferencesTableView->setModel(conferencesTableModel);
 
+    conferencesTableView->horizontalHeader()->setStretchLastSection(true);
+
     mainLayout->addWidget(conferencesTableView);
     setLayout(mainLayout);
 

@@ -12,6 +12,7 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
     conferenceModel->setTalkListData(QList<QString>());
 
     conferenceTableView->setModel(conferenceModel);
+    conferenceTableView->horizontalHeader()->setStretchLastSection(true);
 
     mainLayout->addWidget(conferenceTableView);
     mainLayout->addWidget(detailView);

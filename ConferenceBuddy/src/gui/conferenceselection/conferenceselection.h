@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QJsonValue>
 #include <QJsonObject>
+#include <QHeaderView>
 #include <QDebug>
 #include "../../models/conferenceselectiontablemodel.h"
 
