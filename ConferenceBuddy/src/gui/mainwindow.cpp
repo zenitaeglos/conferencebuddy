@@ -1,10 +1,10 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
-    dataFormat(FactoryFormat::makeFormat("json", "https://api.astrocats.space/catalog?ra=21:23:32.16&dec=-53:01:36.08&radius=2", "schema", this)),
+    //dataFormat(FactoryFormat::makeFormat("json", "https://api.astrocats.space/catalog?ra=21:23:32.16&dec=-53:01:36.08&radius=2", "schema", this)),
     //xmData(FactoryFormat::makeFormat("xml", "https://www.tuebix.org/2019/giggity.xml", "schema", this)),
     //xmData(FactoryFormat::makeFormat("giggity", "https://programm.froscon.de/2019/schedule.xml", this)),
-    xmData(FactoryFormat::makeFormat("giggity", "https://fosdem.org/2020/schedule/xml", this)),
+    //xmData(FactoryFormat::makeFormat("giggity", "https://fosdem.org/2020/schedule/xml", this)),
     //detailViewConference(DetailViewFactory::makeDetailView("fosdem")),
     detailViewConference(DetailViewFactory::makeDetailView("tuebix")),
     mainWidget(new QWidget(this)),
@@ -14,13 +14,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     conferenceSelection(new ConferenceSelection(this))
 {
 
-    dataFormat->fetch();
-    xmData->fetch();
+    //dataFormat->fetch();
+    //xmData->fetch();
     // https://fosdem.org/2020/schedule/xml
     //xmData(FactoryFormat::makeFormat("giggity", "https://fosdem.org/2020/schedule/xml", parent))
     //xmData(FactoryFormat::makeFormat("giggity", "https://programm.froscon.de/2019/schedule.xml", this))
-    connect(xmData, &DataFormat::conferenceChanged, this, &MainWindow::conferenceData);
+    //connect(xmData, &DataFormat::conferenceChanged, this, &MainWindow::conferenceData);
     //connect(buttonChangeDetail, &QPushButton::clicked, this, &MainWindow::changeDetailView);
+
+    connect(conferenceListDetail, &ConferenceListDetail::backToMainPageClicked, this, &MainWindow::selectFirstStack);
 
     setupUI();
 }
@@ -32,14 +34,17 @@ void MainWindow::setupUI()
     //horizontalLayout->addWidget(buttonChangeDetail);
     mainStackLayout->addWidget(conferenceSelection);
     mainStackLayout->addWidget(conferenceListDetail);
-    mainStackLayout->setCurrentIndex(1);
+    //mainStackLayout->setCurrentIndex(1);
 
     //mainWidget->setLayout(horizontalLayout);
     mainWidget->setLayout(mainStackLayout);
 
-    setGeometry(100, 100, 500, 400);
+    setGeometry(100, 100, 800, 600);
 
     setCentralWidget(mainWidget);
+
+    // connects
+    connect(conferenceSelection, &ConferenceSelection::conferenceSelected, this, &MainWindow::chosenConferenceToVisualize);
 }
 
 void MainWindow::conferenceData(QJsonObject headerConference, QJsonArray conferenceList)
@@ -50,6 +55,17 @@ void MainWindow::conferenceData(QJsonObject headerConference, QJsonArray confere
     qDebug() << conferenceList.at(0);
     //qDebug() << conferenceList.size();
     detailViewConference->setJsonData(conferenceList.at(2));
+}
+
+void MainWindow::chosenConferenceToVisualize(QJsonValue conferenceInfo)
+{
+    conferenceListDetail->setConferenceInfo(conferenceInfo);
+    mainStackLayout->setCurrentIndex(1);
+}
+
+void MainWindow::selectFirstStack()
+{
+    mainStackLayout->setCurrentIndex(0);
 }
 
 void MainWindow::changeDetailView()

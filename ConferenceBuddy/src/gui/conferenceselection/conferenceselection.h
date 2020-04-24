@@ -3,6 +3,14 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QTableView>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QHeaderView>
+#include <QDebug>
+#include "../../models/conferenceselectiontablemodel.h"
 
 class ConferenceSelection : public QWidget
 {
@@ -11,6 +19,16 @@ public:
     explicit ConferenceSelection(QWidget *parent = nullptr);
 
 signals:
+    void conferenceSelected(QJsonValue conference);
+
+public slots:
+    void selectedConference(const QModelIndex& index);
+
+
+private:
+    ConferenceSelectionTableModel* conferencesTableModel;
+    QTableView* conferencesTableView;
+    QHBoxLayout* mainLayout;
 
 };
 

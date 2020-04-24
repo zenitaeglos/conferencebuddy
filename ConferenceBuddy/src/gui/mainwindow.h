@@ -34,6 +34,10 @@ signals:
 public slots:
     void conferenceData(QJsonObject headerConference, QJsonArray conferenceList);
 
+    void chosenConferenceToVisualize(QJsonValue conferenceInfo);
+
+    void selectFirstStack();
+
     //change detail slot
     void changeDetailView();
 

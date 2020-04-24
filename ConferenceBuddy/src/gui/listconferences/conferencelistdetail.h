@@ -6,6 +6,8 @@
 #include <QTableView>
 #include <QJsonValue>
 #include <QHBoxLayout>
+#include <QHeaderView>
+#include <QPushButton>
 #include "../../models/conferencetablemodel.h"
 
 #include "dataconference/dataformat.h"
@@ -15,6 +17,7 @@
 
 #include "detailview/detailview.h"
 #include "detailview/tuebix/tuebixdetailview.h"
+#include "detailview/fosdem/fosdemdetailview.h"
 
 class ConferenceListDetail : public QWidget
 {
@@ -24,10 +27,15 @@ public:
 
     void conferenceData(QJsonObject headerConference, QJsonArray conferenceList);
 
+    void setConferenceInfo(QJsonValue conferenceInfo);
+
 signals:
+    void backToMainPageClicked();
 
 public slots:
     void setDetailViewInfo(const QModelIndex& index);
+
+    void leaveThisPage();
 
 private:
     QTableView* conferenceTableView;
@@ -38,6 +46,8 @@ private:
     DetailView* detailView;
 
     QList<QJsonValue> conferenceJsonData;
+
+    QPushButton* backToFirstPageButton;
 
 };
 
