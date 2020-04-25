@@ -9,15 +9,18 @@ ConferenceListDetail::ConferenceListDetail(QWidget *parent) : QWidget(parent),
     //dataFromConference(FactoryFormat::makeFormat("xml", "https://www.tuebix.org/2019/giggity.xml", "schema", this)),
     //detailView(new TuebixDetailView(this)),
     detailView(nullptr),
-    backToFirstPageButton(new QPushButton("Back", this))
+    backToFirstPageButton(new QPushButton("Back", this)),
+    mainDetailView(new MainDetailView(this))
 {
     conferenceModel->setTalkListData(QList<QString>());
 
     conferenceTableView->setModel(conferenceModel);
     conferenceTableView->horizontalHeader()->setStretchLastSection(true);
+    conferenceTableView->setMaximumWidth(parent->width() / 3);
 
     mainLayout->addWidget(conferenceTableView);
     //mainLayout->addWidget(detailView);
+    mainLayout->addWidget(mainDetailView);
     mainLayout->addWidget(backToFirstPageButton);
     setLayout(mainLayout);
 
@@ -55,7 +58,7 @@ void ConferenceListDetail::setConferenceInfo(QJsonValue conferenceInfo)
         detailView = new FosdemDetailView(this);
     else
         detailView = new TuebixDetailView(this);
-    mainLayout->insertWidget(1, detailView);
+    //mainLayout->insertWidget(1, detailView);
     dataFromConference = FactoryFormat::makeFormat("xml", conferenceInfo["url"].toString(), "schema", this);
     connect(dataFromConference, &DataFormat::conferenceChanged, this, &ConferenceListDetail::conferenceData);
     dataFromConference->fetch();
@@ -63,7 +66,8 @@ void ConferenceListDetail::setConferenceInfo(QJsonValue conferenceInfo)
 
 void ConferenceListDetail::setDetailViewInfo(const QModelIndex &index)
 {
-    detailView->setJsonData(conferenceJsonData.at(index.row()));
+    mainDetailView->setDetailInfo(conferenceJsonData.at(index.row()));
+    //detailView->setJsonData(conferenceJsonData.at(index.row()));
 }
 
 void ConferenceListDetail::leaveThisPage()

@@ -10,13 +10,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(DetailView detailviewfactory.cpp
     detailview.cpp
     tuebix/tuebixdetailview.cpp
-    fosdem/fosdemdetailview.cpp)
+    fosdem/fosdemdetailview.cpp
+    maindetailview.cpp
+    tuebix/tuebixview.cpp
+    fosdem/fosdemview.cpp)
 
 
 find_package(Qt5 COMPONENTS Core Widgets Network Multimedia MultimediaWidgets REQUIRED)
 
-#SET(QT_USE_QTMULTIMEDIA TRUE)
-#SET(QT_USE_QTMULTIMEDIAWIDGETS TRUE)
-#QT5_USE_MODULES (DetailView Multimedia MultimediaWidgets)
+SET(QT_USE_QTMULTIMEDIA TRUE)
+SET(QT_USE_QTMULTIMEDIAWIDGETS TRUE)
+QT5_USE_MODULES (DetailView Multimedia MultimediaWidgets)
 
-target_link_libraries(DetailView PRIVATE Qt5::Core Qt5::Widgets Qt5::Network)
+#target_link_libraries(DetailView PRIVATE Qt5::Core Qt5::Widgets Qt5::Network)

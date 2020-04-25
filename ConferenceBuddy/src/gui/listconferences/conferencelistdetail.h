@@ -19,6 +19,9 @@
 #include "detailview/tuebix/tuebixdetailview.h"
 #include "detailview/fosdem/fosdemdetailview.h"
 
+// this is going to be the one to use
+#include "detailview/maindetailview.h"
+
 class ConferenceListDetail : public QWidget
 {
     Q_OBJECT
@@ -48,6 +51,8 @@ private:
     QList<QJsonValue> conferenceJsonData;
 
     QPushButton* backToFirstPageButton;
+
+    MainDetailView* mainDetailView;
 
 };
 
